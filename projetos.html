@@ -48,8 +48,9 @@
       transition: transform 0.3s ease;
       text-decoration: none;
     }
-    nav a.logo:hover {
+    nav a.logo:hover, nav a.logo:focus {
       transform: scale(1.05);
+      outline: none;
     }
     nav ul {
       display: flex;
@@ -63,10 +64,13 @@
       font-weight: 600;
       text-decoration: none;
       transition: color 0.3s ease;
+      outline-offset: 3px;
     }
-    nav ul li a:hover {
+    nav ul li a:hover, nav ul li a:focus {
       color: #60a5fa;
       text-shadow: 0 0 6px #60a5fa;
+      outline: 2px solid #60a5fa;
+      outline-offset: 2px;
     }
     main {
       max-width: 900px;
@@ -104,7 +108,13 @@
       font-size: 1rem;
       line-height: 1.4;
     }
-
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: #93c5fd; /* azul claro */
+      border-top: 1px solid #374151;
+      font-size: 0.9rem;
+    }
     /* Responsividade nav */
     @media (max-width: 640px) {
       nav ul {
@@ -119,12 +129,6 @@
       }
       main {
         margin: 120px 1rem 40px 1rem;
-      }
-    }
-    /* Grid responsivo */
-    @media (max-width: 768px) {
-      .grid-projects {
-        grid-template-columns: 1fr !important;
       }
     }
   </style>
@@ -149,7 +153,7 @@
   <main>
     <h1 id="title">Meus Projetos</h1>
 
-    <div class="grid grid-cols-2 gap-6 grid-projects">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="project-card">
         <h2 class="project-title">Sistema de Gestão de Tarefas</h2>
         <p class="project-description">Aplicação web desenvolvida com PHP e MySQL para controle de tarefas, prazos e usuários. Foco em produtividade e colaboração.</p>
@@ -169,7 +173,7 @@
     </div>
   </main>
 
-  <footer class="text-center py-6 text-gray-500 border-t border-gray-700">
+  <footer>
     © 2025 Vinicius Santos. Todos os direitos reservados.
   </footer>
 
@@ -211,3 +215,4 @@
   </script>
 </body>
 </html>
+
