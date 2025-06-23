@@ -83,7 +83,7 @@
     }
     h1 {
       font-size: 3rem;
-      font-weight: 500;
+      font-weight: 400;
       color: #60a5fa;
       margin-bottom: 2rem;
       animation: neonFade 3s ease-in-out infinite alternate;
@@ -139,7 +139,7 @@
       color: #60a5fa;
       font-size: 1.25rem;
       margin-bottom: 0.25rem;
-      font-weight: 700;
+      font-weight: 600;
       text-shadow: 0 0 6px #60a5fa;
     }
     .timeline-item span {
@@ -231,9 +231,9 @@
     <h1>Sobre Mim</h1>
 
     <img
-      src="https://i.pravatar.cc/160"
-      alt="Foto de Vinicius Santos"
-      class="profile-photo"
+    id="profilePhoto"
+    alt="Foto de Vinicius Santos"
+    class="profile-photo"
     />
 
     <p>
@@ -275,7 +275,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-  <script>
+  <!--<script>
     tsParticles.load("tsparticles", {
       fpsLimit: 60,
       background: { color: "#0f172a" },
@@ -313,6 +313,23 @@
       },
       detectRetina: true
     });
-  </script>
+  </script> -->
+
+<script>
+ 
+  const fotos = [
+    'img/01.jpg',
+    'img/02.jpg',
+    'img/03.jpg',
+    'img/05.jpg',
+    'img/06.jpg',
+  ];
+
+  const fotoEscolhida = fotos[Math.floor(Math.random() * fotos.length)];
+
+  document.getElementById('profilePhoto').src = fotoEscolhida;
+</script>
+
+
 </body>
 </html>
