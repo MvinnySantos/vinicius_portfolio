@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projetos | Vinicius Santos</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: #0f172a;
+      color: white;
+    }
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+    main, header, footer {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <div id="tsparticles"></div>
+
+  <header class="bg-gray-800 p-4 shadow-lg">
+    <nav class="flex justify-between max-w-6xl mx-auto">
+      <a href="index.html" class="font-bold text-xl text-blue-400 hover:scale-105 transform transition">Vinicius Santos</a>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="hover:text-blue-400 transition">Início</a></li>
+        <li><a href="sobre.html" class="hover:text-blue-400 transition">Sobre</a></li>
+        <li><a href="habilidades.html" class="hover:text-blue-400 transition">Habilidades</a></li>
+        <li><a href="projetos.html" class="hover:text-blue-400 transition">Projetos</a></li>
+        <li><a href="contato.html" class="hover:text-blue-400 transition">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto py-16 px-4">
+    <h1 class="text-3xl font-bold text-center mb-8 border-b border-gray-700 pb-2">Meus Projetos</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2">Sistema de Gestão de Tarefas</h2>
+        <p class="text-gray-300">Aplicação web desenvolvida com PHP e MySQL para controle de tarefas, prazos e usuários. Foco em produtividade e colaboração.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2">Painel de Monitoramento</h2>
+        <p class="text-gray-300">Dashboard interativo utilizando Grafana e Zabbix para visualizar métricas de performance de servidores e aplicações em tempo real.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2">API de Consulta de Dados</h2>
+        <p class="text-gray-300">API RESTful desenvolvida em Python para servir dados de sistemas legados de forma segura e escalável.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        <h2 class="text-xl font-semibold text-blue-400 mb-2">Plataforma de Portfólio</h2>
+        <p class="text-gray-300">Site responsivo com HTML, TailwindCSS e JavaScript para apresentar meus projetos, experiências e contato profissional.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-6 text-gray-500 border-t border-gray-700">
+    © 2025 Vinicius Santos. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      background: { color: "#0f172a" },
+      particles: {
+        number: { value: 50, density: { enable: true, area: 800 } },
+        color: { value: "#60a5fa" },
+        shape: { type: "circle" },
+        opacity: { value: 0.25, random: true },
+        size: { value: 3, random: { enable: true, minimumValue: 1 } },
+        move: {
+          enable: true,
+          speed: 1.3,
+          direction: "none",
+          random: true,
+          straight: false,
+          outModes: { default: "out" }
+        },
+        links: { enable: true, distance: 140, color: "#3b82f6", opacity: 0.25, width: 1 }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 180, links: { opacity: 0.5 } },
+          push: { quantity: 4 }
+        }
+      },
+      detectRetina: true
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sobre | Vinicius Santos</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      background: #0f172a;
+      color: #a5b4fc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto; /* Barra de rolagem vertical adicionada */
+      position: relative;
+    }
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+    header {
+      position: fixed;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      z-index: 10;
+      padding: 1rem 2rem;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+    }
+    nav a {
+      color: #a5b4fc;
+      font-weight: 600;
+      margin-left: 2rem;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: #60a5fa;
+      text-shadow: 0 0 8px #60a5fa;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      max-width: 900px;
+      margin: auto;
+      padding: 5rem 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #60a5fa;
+      text-shadow:
+        0 0 5px #60a5fa,
+        0 0 10px #3b82f6,
+        0 0 20px #2563eb,
+        0 0 40px #1e40af;
+      animation: neonFade 3s ease-in-out infinite alternate;
+      margin-bottom: 2rem;
+    }
+
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #60a5fa;
+      box-shadow:
+        0 0 10px #60a5fa,
+        0 0 20px #3b82f6;
+      margin-bottom: 2rem;
+      object-fit: cover;
+      animation: fadeInUp 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    p.description {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: #c7d2fe;
+      max-width: 700px;
+      margin-bottom: 2rem;
+      animation: fadeInUp 2s ease forwards;
+      opacity: 0;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      width: 100%;
+      margin-top: 3rem;
+      padding-left: 2rem;
+      border-left: 3px solid #60a5fa;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 2rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      background: #60a5fa;
+      border-radius: 50%;
+      box-shadow:
+        0 0 10px #60a5fa,
+        0 0 15px #3b82f6;
+    }
+    .timeline-item h3 {
+      color: #60a5fa;
+      margin-bottom: 0.25rem;
+      font-size: 1.25rem;
+    }
+    .timeline-item span {
+      font-size: 0.9rem;
+      color: #a5b4fc;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .timeline-item p {
+      font-size: 1rem;
+      color: #c7d2fe;
+      margin: 0;
+    }
+
+    @keyframes neonFade {
+      0%, 100% {
+        text-shadow:
+          0 0 5px #60a5fa,
+          0 0 10px #3b82f6,
+          0 0 20px #2563eb,
+          0 0 40px #1e40af;
+      }
+      50% {
+        text-shadow:
+          0 0 15px #93c5fd,
+          0 0 25px #60a5fa,
+          0 0 40px #3b82f6,
+          0 0 60px #2563eb;
+      }
+    }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+
+  <header>
+    <nav class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
+      <div>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="habilidades.html">Habilidades</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="contato.html">Contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Sobre Mim</h1>
+    <img src="https://i.pravatar.cc/160" alt="Foto de Vinicius Santos" class="profile-pic" />
+    <p class="description">
+      Sou Vinicius Santos, profissional de Tecnologia da Informação com mais de 11 anos de experiência em diversas áreas da TI. Atuei como analista de suporte, desenvolvedor e atualmente sou DBA, com foco em administração de bancos de dados SQL Server e otimização de consultas.
+    </p>
+    <p class="description">
+      Sou formado em Análise e Desenvolvimento de Sistemas e atualmente curso uma pós-graduação em Engenharia de Software. Tenho paixão por resolver problemas complexos, garantir a estabilidade e performance dos sistemas e contribuir para o crescimento técnico dos projetos onde atuo.
+    </p>
+
+    <section class="timeline" aria-label="Linha do tempo profissional e acadêmica">
+      <div class="timeline-item">
+        <h3>Formação em Análise e Desenvolvimento de Sistemas</h3>
+        <span>2024</span>
+        <p>Conclusão da graduação que proporcionou a base técnica para minha carreira em TI.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Início da Pós-graduação em Engenharia de Software</h3>
+        <span>2025 (em andamento)</span>
+        <p>Buscando aprofundar conhecimentos em arquitetura, qualidade e gestão de software.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Transição para DBA</h3>
+        <span>2025</span>
+        <p>Foquei na administração e otimização de bancos de dados SQL Server, buscando excelência em performance.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Mais de 11 anos de experiência em TI</h3>
+        <span>2013 - presente</span>
+        <p>Experiência sólida em desenvolvimento backend, infraestrutura, monitoramento e suporte técnico.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script>
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      background: {
+        color: "#0f172a"
+      },
+      particles: {
+        number: {
+          value: 50,
+          density: {
+            enable: true,
+            area: 800
+          }
+        },
+        color: {
+          value: "#60a5fa"
+        },
+        shape: {
+          type: "circle"
+        },
+        opacity: {
+          value: 0.25,
+          random: true
+        },
+        size: {
+          value: 3,
+          random: { enable: true, minimumValue: 1 }
+        },
+        move: {
+          enable: true,
+          speed: 1.3,
+          direction: "none",
+          random: true,
+          straight: false,
+          outModes: {
+            default: "out"
+          }
+        },
+        links: {
+          enable: true,
+          distance: 140,
+          color: "#3b82f6",
+          opacity: 0.25,
+          width: 1
+        }
+      },
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "grab"
+          },
+          onClick: {
+            enable: true,
+            mode: "push"
+          }
+        },
+        modes: {
+          grab: {
+            distance: 180,
+            links: {
+              opacity: 0.5
+            }
+          },
+          push: {
+            quantity: 4
+          }
+        }
+      },
+      detectRetina: true
+    });
+  </script>
+</body>
+</html>
+
+

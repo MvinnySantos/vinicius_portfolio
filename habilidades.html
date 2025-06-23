@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Habilidades | Vinicius Santos</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    html, body {
+      height: auto;
+      margin: 0;
+      background: #0f172a;
+      color: #a5b4fc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+      overflow-y: auto;
+    }
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+    header {
+      position: fixed;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      z-index: 10;
+      padding: 1rem 2rem;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+    }
+    nav a {
+      color: #a5b4fc;
+      font-weight: 600;
+      margin-left: 2rem;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: #60a5fa;
+      text-shadow: 0 0 8px #60a5fa;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 6rem auto 3rem;
+      padding: 0 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #60a5fa;
+      text-shadow:
+        0 0 5px #60a5fa,
+        0 0 10px #3b82f6,
+        0 0 20px #2563eb,
+        0 0 40px #1e40af;
+      animation: neonFade 3s ease-in-out infinite alternate;
+      margin-bottom: 3rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    .skill-card {
+      background: rgba(36, 52, 71, 0.6);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow:
+        0 0 10px #60a5fa,
+        0 0 20px #3b82f6;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-card:hover {
+      transform: scale(1.1);
+      box-shadow:
+        0 0 30px #60a5fa,
+        0 0 50px #3b82f6;
+      z-index: 2;
+    }
+
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 5px #60a5fa);
+      transition: filter 0.3s ease;
+      object-fit: contain;
+    }
+
+    .skill-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #a5b4fc;
+      text-shadow: 0 0 4px #60a5fa;
+      user-select: none;
+    }
+
+    #btn-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: #2563eb;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 10px #3b82f6;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+    }
+    #btn-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @keyframes neonFade {
+      0%, 100% {
+        text-shadow:
+          0 0 5px #60a5fa,
+          0 0 10px #3b82f6,
+          0 0 20px #2563eb,
+          0 0 40px #1e40af;
+      }
+      50% {
+        text-shadow:
+          0 0 15px #93c5fd,
+          0 0 25px #60a5fa,
+          0 0 40px #3b82f6,
+          0 0 60px #2563eb;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="tsparticles"></div>
+
+  <header>
+    <nav class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
+      <div>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="habilidades.html">Habilidades</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="contato.html">Contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Minhas Habilidades Técnicas</h1>
+    <div class="skills-grid">
+      <div class="skill-card" title="SQL Server">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" class="skill-icon" />
+        <div class="skill-name">SQL Server</div>
+      </div>
+      <div class="skill-card" title="Oracle">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle" class="skill-icon" />
+        <div class="skill-name">Oracle</div>
+      </div>
+      <div class="skill-card" title="PostgreSQL">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="skill-icon" />
+        <div class="skill-name">PostgreSQL</div>
+      </div>
+      <div class="skill-card" title="C#">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="skill-icon" />
+        <div class="skill-name">C#</div>
+      </div>
+      <div class="skill-card" title="JavaScript">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-icon" />
+        <div class="skill-name">JavaScript</div>
+      </div>
+      <div class="skill-card" title="PHP">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" class="skill-icon" />
+        <div class="skill-name">PHP</div>
+      </div>
+      <div class="skill-card" title="MySQL">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="skill-icon" />
+        <div class="skill-name">MySQL</div>
+      </div>
+      <div class="skill-card" title="Active Directory">
+        <img src="https://img.icons8.com/ios/50/60a5fa/domain-controller.png" alt="Active Directory" class="skill-icon" />
+        <div class="skill-name">Active Directory</div>
+      </div>
+      <div class="skill-card" title="DHCP">
+        <img src="https://img.icons8.com/ios-filled/50/60a5fa/server.png" alt="DHCP" class="skill-icon" />
+        <div class="skill-name">DHCP</div>
+      </div>
+      <div class="skill-card" title="File Server">
+        <img src="https://img.icons8.com/ios-filled/50/60a5fa/folder-invoices--v1.png" alt="File Server" class="skill-icon" />
+        <div class="skill-name">File Server</div>
+      </div>
+      <div class="skill-card" title="GLPI">
+        <img src="https://cdn-icons-png.flaticon.com/512/3472/3472893.png" alt="GLPI" class="skill-icon" />
+        <div class="skill-name">GLPI</div>
+      </div>
+      <div class="skill-card" title="Zabbix">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Zabbix_logo.svg/512px-Zabbix_logo.svg.png" alt="Zabbix" class="skill-icon" />
+        <div class="skill-name">Zabbix</div>
+      </div>
+    </div>
+  </main>
+
+  <button id="btn-top" aria-label="Voltar ao topo">Topo ↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script>
+    // Partículas no background
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      background: { color: "#0f172a" },
+      particles: {
+        number: { value: 50, density: { enable: true, area: 800 } },
+        color: { value: "#60a5fa" },
+        shape: { type: "circle" },
+        opacity: { value: 0.25, random: true },
+        size: { value: 3, random: { enable: true, minimumValue: 1 } },
+        move: { enable: true, speed: 1.3, direction: "none", random: true, straight: false, outModes: { default: "out" } },
+        links: { enable: true, distance: 140, color: "#3b82f6", opacity: 0.25, width: 1 }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 180, links: { opacity: 0.5 } },
+          push: { quantity: 4 }
+        }
+      },
+      detectRetina: true
+    });
+
+    // Botão voltar ao topo
+    const btnTop = document.getElementById('btn-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        btnTop.classList.add('show');
+      } else {
+        btnTop.classList.remove('show');
+      }
+    });
+    btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

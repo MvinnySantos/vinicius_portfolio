@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | Vinicius Santos</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: #0f172a;
+      color: white;
+    }
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+    main, header, footer {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <div id="tsparticles"></div>
+
+  <header class="bg-gray-800 p-4 shadow-lg">
+    <nav class="flex justify-between max-w-6xl mx-auto">
+      <a href="index.html" class="font-bold text-xl text-blue-400 hover:scale-105 transform transition">Vinicius Santos</a>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="hover:text-blue-400 transition">Início</a></li>
+        <li><a href="sobre.html" class="hover:text-blue-400 transition">Sobre</a></li>
+        <li><a href="habilidades.html" class="hover:text-blue-400 transition">Habilidades</a></li>
+        <li><a href="projetos.html" class="hover:text-blue-400 transition">Projetos</a></li>
+        <li><a href="contato.html" class="hover:text-blue-400 transition">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-3xl mx-auto py-16 px-4">
+    <div class="flex flex-col items-center justify-center">
+      <lottie-player 
+        src="https://assets2.lottiefiles.com/packages/lf20_6g6gys.json" 
+        background="transparent" 
+        speed="1" 
+        style="width: 200px; height: 200px;" 
+        loop 
+        autoplay>
+      </lottie-player>
+
+      <h1 class="text-3xl font-bold mb-6 border-b border-gray-600 pb-2" id="titulo">Contato</h1>
+      <p class="text-gray-300 mb-4 text-center" id="mensagem">Se quiser conversar sobre oportunidades, parcerias ou projetos, entre em contato por um dos canais abaixo:</p>
+
+      <ul class="text-gray-300 space-y-2 text-center" id="contatos">
+        <li>📧 E-mail: <a href="mailto:vinicius@email.com" class="text-blue-400 underline hover:text-blue-300">vinicius@email.com</a></li>
+        <li>💼 LinkedIn: <a href="https://linkedin.com/in/vinicius" class="text-blue-400 underline hover:text-blue-300">linkedin.com/in/vinicius</a></li>
+        <li>💻 GitHub: <a href="https://github.com/vinicius" class="text-blue-400 underline hover:text-blue-300">github.com/vinicius</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="text-center py-6 text-gray-500 border-t border-gray-700">
+    © 2025 Vinicius Santos. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    ScrollReveal().reveal('#titulo', { delay: 200, origin: 'left', distance: '50px' });
+    ScrollReveal().reveal('#mensagem', { delay: 400, origin: 'right', distance: '50px' });
+    ScrollReveal().reveal('#contatos', { delay: 600, origin: 'bottom', distance: '50px' });
+
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      background: { color: "#0f172a" },
+      particles: {
+        number: { value: 50, density: { enable: true, area: 800 } },
+        color: { value: "#60a5fa" },
+        shape: { type: "circle" },
+        opacity: { value: 0.25, random: true },
+        size: { value: 3, random: { enable: true, minimumValue: 1 } },
+        move: {
+          enable: true,
+          speed: 1.3,
+          direction: "none",
+          random: true,
+          straight: false,
+          outModes: { default: "out" }
+        },
+        links: { enable: true, distance: 140, color: "#3b82f6", opacity: 0.25, width: 1 }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 180, links: { opacity: 0.5 } },
+          push: { quantity: 4 }
+        }
+      },
+      detectRetina: true
+    });
+  </script>
+</body>
+</html>
