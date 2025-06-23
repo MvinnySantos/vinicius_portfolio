@@ -2,22 +2,21 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>Contato | Vinicius Santos</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <style>
-    html, body {
-      height: auto;
+    body, html {
+      height: 100%;
       margin: 0;
       background: #0f172a;
       color: #a5b4fc;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
       position: relative;
-      overflow-y: auto;
     }
+
     #tsparticles {
       position: fixed;
       width: 100%;
@@ -26,58 +25,26 @@
       top: 0;
       left: 0;
     }
-    header {
-      position: fixed;
-      width: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      z-index: 10;
-      padding: 1rem 2rem;
-      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
-    }
-    nav {
-      max-width: 1024px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    nav a.logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #60a5fa;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-    }
-    nav a.logo:hover {
-      transform: scale(1.05);
-    }
-    nav div a {
-      color: #a5b4fc;
-      font-weight: 600;
-      margin-left: 2rem;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    nav div a:hover {
-      color: #60a5fa;
-      text-shadow: 0 0 8px #60a5fa;
-    }
-    nav div a.active {
-      color: #60a5fa;
-      font-weight: 700;
-    }
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 100px auto 3rem;
-      padding: 0 2rem 3rem;
+
+    .wrapper {
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 0 2rem 3rem;
+      margin-top: 100px;
     }
+
     h1 {
       font-size: 3rem;
       color: #60a5fa;
@@ -89,11 +56,13 @@
       animation: neonFade 3s ease-in-out infinite alternate;
       margin-bottom: 2rem;
     }
+
     p {
       color: #a5b4fc;
       margin-bottom: 2rem;
       font-size: 1.125rem;
     }
+
     ul#contatos {
       color: #a5b4fc;
       list-style: none;
@@ -103,15 +72,19 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      max-width: 400px;
     }
+
     ul#contatos li a {
       color: #60a5fa;
       text-decoration: underline;
       transition: color 0.3s ease;
     }
+
     ul#contatos li a:hover {
       color: #93c5fd;
     }
+
     @keyframes neonFade {
       0%, 100% {
         text-shadow:
@@ -128,9 +101,11 @@
           0 0 60px #2563eb;
       }
     }
+
     @media (max-width: 640px) {
       nav div a {
-        margin-left: 1rem;
+        margin-left: 0;
+        margin-top: 0.5rem;
         font-size: 0.9rem;
       }
       main {
@@ -138,8 +113,44 @@
       }
       ul#contatos {
         font-size: 1rem;
+        max-width: 100%;
       }
     }
+
+    header {
+      position: fixed;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      z-index: 10;
+      padding: 1rem 2rem;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+    }
+
+    nav a {
+      color: #a5b4fc;
+      font-weight: 600;
+      margin-left: 2rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #60a5fa;
+      text-shadow: 0 0 8px #60a5fa;
+    }
+
+    @media (max-width: 640px) {
+      nav div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0.5rem;
+      }
+
+      #menu {
+        width: 100%;
+      }
+    }
+
     footer {
       text-align: center;
       padding: 1.5rem 0;
@@ -147,50 +158,71 @@
       border-top: 1px solid #374151;
       font-size: 0.9rem;
     }
+
+    @media (min-width: 640px) {
+      #menu {
+        display: flex !important;
+      }
+    }
   </style>
 </head>
 <body>
 
   <div id="tsparticles"></div>
 
-  <header>
-    <nav>
-      <a href="index.html" class="logo">Vinicius Santos</a>
-      <div>
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="habilidades.html">Habilidades</a>
-        <a href="projetos.html">Projetos</a>
-        <a href="contato.html" class="active">Contato</a>
-      </div>
-    </nav>
-  </header>
+  <div class="wrapper">
+    <header>
+      <nav class="max-w-6xl mx-auto flex justify-between items-center flex-wrap">
+        <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
 
-  <main>
-    <lottie-player
-    src="https://assets5.lottiefiles.com/packages/lf20_jcikwtux.json"
-    background="transparent"
-    speed="1"
-    style="width: 200px; height: 200px;"
-    loop
-    autoplay>
-    </lottie-player>
+        <!-- Botão do menu mobile -->
+        <button id="menu-btn" class="sm:hidden text-blue-400 focus:outline-none" aria-label="Toggle menu">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
 
-    <h1 id="titulo">Contato</h1>
-    <p id="mensagem">Se quiser conversar sobre oportunidades, parcerias ou projetos, entre em contato por um dos canais abaixo:</p>
+        <!-- Menu de navegação -->
+        <div id="menu" class="hidden sm:flex flex-col sm:flex-row sm:items-center sm:space-x-8 mt-2 sm:mt-0">
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="habilidades.html">Habilidades</a>
+          <a href="projetos.html">Projetos</a>
+          <a href="contato.html" class="active">Contato</a>
+        </div>
+      </nav>
+    </header>
 
-    <ul id="contatos" aria-label="Canais de contato">
-      <li>📧 E-mail: <a href="mailto:viniciussantostec.vs@gmail.com">viniciussantostec.vs@gmail.com</a></li>
-      <li>📱 WhatsApp: <a href="https://wa.me/5517986821061" target="_blank" rel="noopener noreferrer">+55 71 98682-1961</a></li>
-      <li>💼 LinkedIn: <a href="https://www.linkedin.com/in/vinicius-santos-942133271?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">linkedin.com/in/vinicius</a></li>
-    </ul>
-  </main>
+    <main>
+      <lottie-player
+        src="https://assets5.lottiefiles.com/packages/lf20_jcikwtux.json"
+        background="transparent"
+        speed="1"
+        style="width: 200px; height: 200px;"
+        loop
+        autoplay>
+      </lottie-player>
 
+      <h1>Contato</h1>
+      <p>Se quiser conversar sobre oportunidades, parcerias ou projetos, entre em contato por um dos canais abaixo:</p>
+
+      <ul id="contatos" aria-label="Canais de contato">
+        <li>📧 E-mail: <a href="mailto:viniciussantostec.vs@gmail.com">viniciussantostec.vs@gmail.com</a></li>
+        <li>📱 WhatsApp: <a href="https://wa.me/5517986821061" target="_blank" rel="noopener noreferrer">+55 71 98682-1961</a></li>
+        <li>💼 LinkedIn: <a href="https://www.linkedin.com/in/vinicius-santos-942133271?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer">linkedin.com/in/vinicius</a></li>
+      </ul>
+    </main>
+
+    <footer>
+      © 2025 Vinicius Santos. Todos os direitos reservados.
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script>
-    ScrollReveal().reveal('#titulo', { delay: 200, origin: 'left', distance: '50px' });
-    ScrollReveal().reveal('#mensagem', { delay: 400, origin: 'right', distance: '50px' });
-    ScrollReveal().reveal('#contatos', { delay: 600, origin: 'bottom', distance: '50px' });
-
     tsParticles.load("tsparticles", {
       fpsLimit: 60,
       background: { color: "#0f172a" },
@@ -209,7 +241,7 @@
           outModes: { default: "out" }
         },
         links: { enable: true, distance: 140, color: "#3b82f6", opacity: 0.25, width: 1 }
-     },
+      },
       interactivity: {
         events: {
           onHover: { enable: true, mode: "grab" },
@@ -220,15 +252,16 @@
           push: { quantity: 4 }
         }
       },
-      detectRetina: true 
-    //}
-    );
+      detectRetina: true
+    });
+
+    // Script do botão do menu
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
   </script>
-
- <footer>
-    © 2025 Vinicius Santos. Todos os direitos reservados.
-  </footer>
-
 </body>
 </html>
-

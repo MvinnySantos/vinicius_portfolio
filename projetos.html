@@ -2,21 +2,20 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projetos | Vinicius Santos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Vinicius Santos - Projetos</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-  <script src="https://unpkg.com/scrollreveal"></script>
   <style>
-    html, body {
-      height: auto;
+    body, html {
+      height: 100%;
       margin: 0;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      background: #0f172a;
       color: #a5b4fc;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
       position: relative;
-      overflow-y: auto;
     }
+
     #tsparticles {
       position: fixed;
       width: 100%;
@@ -24,83 +23,52 @@
       z-index: 0;
       top: 0;
       left: 0;
-      pointer-events: none;
-      background: transparent;
     }
-    header {
-      position: fixed;
-      width: 100%;
-      background-color: rgba(15, 23, 42, 0.9);
-      padding: 1rem 2rem;
-      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
-      z-index: 10;
-    }
-    nav {
-      max-width: 1024px;
-      margin: 0 auto;
+
+    .wrapper {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
     }
-    nav a.logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #60a5fa;
-      transition: transform 0.3s ease;
-      text-decoration: none;
-    }
-    nav a.logo:hover, nav a.logo:focus {
-      transform: scale(1.05);
-      outline: none;
-    }
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    nav ul li a {
-      color: #a5b4fc;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      outline-offset: 3px;
-    }
-    nav ul li a:hover, nav ul li a:focus {
-      color: #60a5fa;
-      text-shadow: 0 0 8px #60a5fa;
-      outline: 2px solid #60a5fa;
-      outline-offset: 2px;
-    }
-    nav ul li a.active {
-      color: #60a5fa;
-      font-weight: 700;
-      text-shadow: 0 0 10px #60a5fa;
-    }
+
     main {
+      flex: 1;
       max-width: 900px;
       margin: 110px auto 40px auto;
       padding: 0 1rem;
       position: relative;
       z-index: 1;
     }
+
     h1 {
-      font-size: 2.5rem;
-      font-weight: 550;
-      text-align: center;
+      font-size: 3.5rem;
+      color: #60a5fa;
+      text-shadow: 0 0 5px #60a5fa, 0 0 10px #3b82f6, 0 0 20px #2563eb, 0 0 40px #1e40af;
+      animation: neonFade 3s ease-in-out infinite alternate;
       margin-bottom: 2rem;
+      text-align: center;
       border-bottom: 2px solid #374151;
       padding-bottom: 0.5rem;
-      color: #60a5fa;
-      text-shadow:
-        0 0 5px #60a5fa,
-        0 0 10px #3b82f6,
-        0 0 20px #2563eb,
-        0 0 40px #1e40af;
-      animation: neonFade 3s ease-in-out infinite alternate;
     }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2.5rem; }
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .project-card {
       background-color: rgba(36, 52, 71, 0.6);
       padding: 1.5rem;
@@ -111,8 +79,8 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: default;
       color: #a5b4fc;
-      margin-bottom: 1.5rem;
     }
+
     .project-card:hover {
       transform: scale(1.05);
       box-shadow:
@@ -120,6 +88,7 @@
         0 0 50px #3b82f6;
       z-index: 2;
     }
+
     .project-title {
       color: #60a5fa;
       font-size: 1.25rem;
@@ -127,20 +96,67 @@
       margin-bottom: 0.5rem;
       text-shadow: 0 0 6px #60a5fa;
     }
+
     .project-description {
       color: #c7d2fe;
       font-size: 1rem;
       line-height: 1.4;
     }
+
+    header {
+      position: fixed;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      z-index: 10;
+      padding: 1rem 2rem;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+    }
+
+    nav a {
+      color: #a5b4fc;
+      font-weight: 600;
+      margin-left: 2rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #60a5fa;
+      text-shadow: 0 0 8px #60a5fa;
+    }
+
+    @media (max-width: 640px) {
+      nav div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0.5rem;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      #menu {
+        width: 100%;
+      }
+    }
+
     footer {
       text-align: center;
       padding: 1.5rem 0;
       color: #93c5fd;
       border-top: 1px solid #374151;
       font-size: 0.9rem;
-      position: relative;
-      z-index: 1;
     }
+
+    @media (min-width: 640px) {
+      #menu {
+        display: flex !important;
+      }
+    }
+
     @keyframes neonFade {
       0%, 100% {
         text-shadow:
@@ -157,80 +173,74 @@
           0 0 60px #2563eb;
       }
     }
-    /* Responsividade nav */
-    @media (max-width: 640px) {
-      nav ul {
-        width: 100%;
-        justify-content: center;
-        margin-top: 0.5rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      nav a.logo {
-        font-size: 1.25rem;
-      }
-      main {
-        margin: 120px 1rem 40px 1rem;
-      }
-    }
   </style>
 </head>
 <body>
-
   <div id="tsparticles"></div>
 
-  <header>
-    <nav>
-      <a href="index.html" class="logo">Vinicius Santos</a>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="habilidades.html">Habilidades</a></li>
-        <li><a href="projetos.html" class="active">Projetos</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="wrapper">
+    <header>
+      <nav class="max-w-6xl mx-auto flex justify-between items-center flex-wrap">
+        <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
 
-  <main>
-    <h1 id="title">Meus Projetos</h1>
+        <!-- Botão do menu mobile -->
+        <button id="menu-btn" class="sm:hidden text-blue-400 focus:outline-none" aria-label="Abrir menu">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="project-card">
-        <h2 class="project-title">Sistema de Gestão de Tarefas</h2>
-        <p class="project-description">Aplicação web desenvolvida com PHP e MySQL para controle de tarefas, prazos e usuários. Foco em produtividade e colaboração.</p>
-      </div>
-      <div class="project-card">
-        <h2 class="project-title">Painel de Monitoramento</h2>
-        <p class="project-description">Dashboard interativo utilizando Grafana e Zabbix para visualizar métricas de performance de servidores e aplicações em tempo real.</p>
-      </div>
-      <div class="project-card">
-        <h2 class="project-title">API de Consulta de Dados</h2>
-        <p class="project-description">API RESTful desenvolvida em Python para servir dados de sistemas legados de forma segura e escalável.</p>
-      </div>
-      <div class="project-card">
-        <h2 class="project-title">Plataforma de Portfólio</h2>
-        <p class="project-description">Site responsivo com HTML, TailwindCSS e JavaScript para apresentar meus projetos, experiências e contato profissional.</p>
-      </div>
-    </div>
-  </main>
+        <!-- Menu de navegação -->
+        <div id="menu" class="hidden sm:flex flex-col sm:flex-row sm:items-center sm:space-x-8 mt-2 sm:mt-0">
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="habilidades.html">Habilidades</a>
+          <a href="projetos.html" class="active">Projetos</a>
+          <a href="contato.html">Contato</a>
+        </div>
+      </nav>
+    </header>
 
-  <footer>
-    © 2025 Vinicius Santos. Todos os direitos reservados.
-  </footer>
+    <main>
+      <h1>Meus Projetos</h1>
 
+      <div class="projects-grid">
+        <div class="project-card">
+          <h2 class="project-title">Sistema de Gestão de Tarefas</h2>
+          <p class="project-description">Aplicação web desenvolvida com PHP e MySQL para controle de tarefas, prazos e usuários. Foco em produtividade e colaboração.</p>
+        </div>
+        <div class="project-card">
+          <h2 class="project-title">Painel de Monitoramento</h2>
+          <p class="project-description">Dashboard interativo utilizando Grafana e Zabbix para visualizar métricas de performance de servidores e aplicações em tempo real.</p>
+        </div>
+        <div class="project-card">
+          <h2 class="project-title">API de Consulta de Dados</h2>
+          <p class="project-description">API RESTful desenvolvida em Python para servir dados de sistemas legados de forma segura e escalável.</p>
+        </div>
+        <div class="project-card">
+          <h2 class="project-title">Plataforma de Portfólio</h2>
+          <p class="project-description">Site responsivo com HTML, TailwindCSS e JavaScript para apresentar meus projetos, experiências e contato profissional.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      © 2025 Vinicius Santos. Todos os direitos reservados.
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script>
-    ScrollReveal().reveal('#title', { delay: 200, origin: 'left', distance: '50px' });
-    ScrollReveal().reveal('.project-card', { delay: 400, origin: 'bottom', distance: '20px', interval: 150 });
-
     tsParticles.load("tsparticles", {
       fpsLimit: 60,
-      background: { color: "transparent" },
+      background: { color: "#0f172a" },
       particles: {
         number: { value: 60, density: { enable: true, area: 800 } },
-        color: { value: "#38bdf8" },
+        color: { value: "#60a5fa" },
         shape: { type: "circle" },
-        opacity: { value: 0.5, random: true },
+        opacity: { value: 0.3, random: true },
         size: { value: 3, random: { enable: true, minimumValue: 1 } },
         move: {
           enable: true,
@@ -243,9 +253,9 @@
         links: {
           enable: true,
           distance: 150,
-          color: "#38bdf8",
-          opacity: 0.5,
-          width: 1.5
+          color: "#3b82f6",
+          opacity: 0.3,
+          width: 1
         }
       },
       interactivity: {
@@ -254,13 +264,20 @@
           onClick: { enable: true, mode: "push" }
         },
         modes: {
-          grab: { distance: 180, links: { opacity: 0.7 } },
+          grab: { distance: 180, links: { opacity: 0.5 } },
           push: { quantity: 4 }
         }
       },
       detectRetina: true
     });
-  </script>
 
+    // Script do botão do menu
+    const btn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
 </body>
 </html>

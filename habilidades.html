@@ -170,20 +170,28 @@
   <div id="tsparticles"></div>
 
   <header>
-    <nav>
-      <a href="index.html" class="logo">Vinicius Santos</a>
-      <div>
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="habilidades.html" class="active">Habilidades</a>
-        <a href="projetos.html">Projetos</a>
-        <a href="contato.html">Contato</a>
-      </div>
-    </nav>
+    <nav class="max-w-6xl mx-auto flex justify-between items-center flex-wrap">
+  <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
+
+  <!-- Botão hamburguer (visível apenas em telas pequenas) -->
+  <button id="menu-toggle" class="text-blue-400 sm:hidden focus:outline-none text-3xl">
+    &#9776;
+  </button>
+
+  <!-- Menu de navegação -->
+  <div id="menu" class="w-full sm:w-auto mt-4 sm:mt-0 hidden sm:flex flex-col sm:flex-row sm:items-center sm:space-x-6">
+    <a href="index.html" class="block text-center sm:text-left mb-2 sm:mb-0">Início</a>
+    <a href="sobre.html" class="block text-center sm:text-left mb-2 sm:mb-0">Sobre</a>
+    <a href="habilidades.html" class="block text-center sm:text-left mb-2 sm:mb-0 active">Habilidades</a>
+    <a href="projetos.html" class="block text-center sm:text-left mb-2 sm:mb-0">Projetos</a>
+    <a href="contato.html" class="block text-center sm:text-left">Contato</a>
+  </div>
+</nav>
+
   </header>
 
   <main>
-    <h1 id="title">Minhas Habilidades Técnicas</h1>
+    <h1 id="title">Minhas Habilidades</h1>
     <div class="skills-grid">
       <div class="skill-card" title="SQL Server">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" class="skill-icon" />
@@ -272,6 +280,12 @@
 
     ScrollReveal().reveal('#title', { delay: 200, origin: 'left', distance: '50px' });
     ScrollReveal().reveal('.skill-card', { delay: 400, origin: 'bottom', distance: '20px', interval: 100 });
+  
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('hidden');
+    });
+  
   </script>
 </body>
 </html>
