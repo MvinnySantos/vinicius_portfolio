@@ -5,142 +5,190 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contato | Vinicius Santos</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <style>
-    body, html {
+    html, body {
+      height: auto;
       margin: 0;
-      padding: 0;
       background: #0f172a;
       color: #a5b4fc;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
       position: relative;
+      overflow-y: auto;
     }
-
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
     header {
       position: fixed;
       width: 100%;
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.9);
       z-index: 10;
       padding: 1rem 2rem;
       box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
     }
-
-    nav a {
+    nav {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a.logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #60a5fa;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    nav a.logo:hover {
+      transform: scale(1.05);
+    }
+    nav div a {
       color: #a5b4fc;
       font-weight: 600;
-      margin-left: 1rem;
-      transition: color 0.3s ease;
+      margin-left: 2rem;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
-
-    nav a:hover {
+    nav div a:hover {
       color: #60a5fa;
       text-shadow: 0 0 8px #60a5fa;
     }
-
+    nav div a.active {
+      color: #60a5fa;
+      font-weight: 700;
+    }
     main {
-      max-width: 700px;
-      margin: 120px auto 40px;
-      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 100px auto 3rem; /* espaço para header fixo */
+      padding: 0 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
     }
-
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      text-align: left;
+    h1 {
+      font-size: 3rem;
+      color: #60a5fa;
+      text-shadow:
+        0 0 5px #60a5fa,
+        0 0 10px #3b82f6,
+        0 0 20px #2563eb,
+        0 0 40px #1e40af;
+      animation: neonFade 3s ease-in-out infinite alternate;
+      margin-bottom: 2rem;
+    }
+    p {
+      color: #a5b4fc;
+      margin-bottom: 2rem;
+      font-size: 1.125rem;
+    }
+    ul#contatos {
+      color: #a5b4fc;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    ul#contatos li a {
+      color: #60a5fa;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    ul#contatos li a:hover {
       color: #93c5fd;
     }
-
-    input, textarea {
-      width: 100%;
-      background-color: #1e293b;
-      color: white;
-      border: 1px solid #374151;
-      border-radius: 0.5rem;
-      padding: 0.75rem;
-      margin-bottom: 1.5rem;
-      resize: vertical;
+    @keyframes neonFade {
+      0%, 100% {
+        text-shadow:
+          0 0 5px #60a5fa,
+          0 0 10px #3b82f6,
+          0 0 20px #2563eb,
+          0 0 40px #1e40af;
+      }
+      50% {
+        text-shadow:
+          0 0 15px #93c5fd,
+          0 0 25px #60a5fa,
+          0 0 40px #3b82f6,
+          0 0 60px #2563eb;
+      }
     }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #60a5fa;
-      box-shadow: 0 0 10px #3b82f6;
-    }
-
-    button {
-      background-color: #2563eb;
-      color: white;
-      font-weight: bold;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 0.5rem;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #1e40af;
-      box-shadow: 0 0 10px #3b82f6;
-    }
-
+    /* Responsividade */
     @media (max-width: 640px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
+      nav div a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+      }
+      main {
+        margin: 110px 1rem 2rem 1rem;
+      }
+      ul#contatos {
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
+
   <div id="tsparticles"></div>
 
-  <!-- Header Responsivo -->
   <header>
-    <nav class="max-w-6xl mx-auto flex justify-between items-center flex-wrap">
-      <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
-      <div class="space-x-3 sm:space-x-6 flex flex-wrap mt-2 sm:mt-0">
+    <nav>
+      <a href="index.html" class="logo">Vinicius Santos</a>
+      <div>
         <a href="index.html">Início</a>
         <a href="sobre.html">Sobre</a>
         <a href="habilidades.html">Habilidades</a>
         <a href="projetos.html">Projetos</a>
-        <a href="contato.html" class="text-blue-400 font-bold">Contato</a>
+        <a href="contato.html" class="active">Contato</a>
       </div>
     </nav>
   </header>
 
-  <!-- Conteúdo -->
   <main>
-    <h1 class="text-3xl sm:text-4xl font-bold text-blue-400 mb-8">Entre em Contato</h1>
+    <lottie-player 
+      src="https://assets2.lottiefiles.com/packages/lf20_6g6gys.json" 
+      background="transparent" 
+      speed="1" 
+      style="width: 200px; height: 200px;" 
+      loop 
+      autoplay>
+    </lottie-player>
 
-    <form action="#" method="POST">
-      <div>
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
-      </div>
+    <h1 id="titulo">Contato</h1>
+    <p id="mensagem">Se quiser conversar sobre oportunidades, parcerias ou projetos, entre em contato por um dos canais abaixo:</p>
 
-      <div>
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="seu@email.com" required />
-      </div>
-
-      <div>
-        <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
-      </div>
-
-      <button type="submit">Enviar</button>
-    </form>
+    <ul id="contatos" aria-label="Canais de contato">
+      <li>📧 E-mail: <a href="mailto:vinicius@email.com">vinicius@email.com</a></li>
+      <li>💼 LinkedIn: <a href="https://linkedin.com/in/vinicius" target="_blank" rel="noopener noreferrer">linkedin.com/in/vinicius</a></li>
+      <li>💻 GitHub: <a href="https://github.com/vinicius" target="_blank" rel="noopener noreferrer">github.com/vinicius</a></li>
+    </ul>
   </main>
 
-  <footer class="text-center py-6 text-gray-500 border-t border-gray-700">
+  <footer>
     © 2025 Vinicius Santos. Todos os direitos reservados.
   </footer>
 
-  <!-- Partículas -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script>
+    ScrollReveal().reveal('#titulo', { delay: 200, origin: 'left', distance: '50px' });
+    ScrollReveal().reveal('#mensagem', { delay: 400, origin: 'right', distance: '50px' });
+    ScrollReveal().reveal('#contatos', { delay: 600, origin: 'bottom', distance: '50px' });
+
     tsParticles.load("tsparticles", {
       fpsLimit: 60,
       background: { color: "#0f172a" },
@@ -173,5 +221,7 @@
       detectRetina: true
     });
   </script>
+
 </body>
 </html>
+

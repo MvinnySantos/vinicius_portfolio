@@ -5,17 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sobre | Vinicius Santos</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-  <script src="https://unpkg.com/scrollreveal"></script>
   <style>
-    html, body {
+    body, html {
+      height: 100%;
       margin: 0;
       background: #0f172a;
       color: #a5b4fc;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
     }
-
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
     header {
       position: fixed;
       width: 100%;
@@ -24,23 +30,17 @@
       padding: 1rem 2rem;
       box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
     }
-
     nav a {
+      color: #a5b4fc;
       font-weight: 600;
       margin-left: 1rem;
+      transition: color 0.3s ease;
       text-decoration: none;
     }
-
     nav a:hover {
       color: #60a5fa;
       text-shadow: 0 0 8px #60a5fa;
     }
-
-    .active {
-      color: #60a5fa;
-      font-weight: bold;
-    }
-
     @keyframes neonFade {
       0%, 100% {
         text-shadow:
@@ -57,21 +57,9 @@
           0 0 60px #2563eb;
       }
     }
-
-    @media (max-width: 640px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav .space-x-3 {
-        margin-top: 0.5rem;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-      img {
-        width: 120px;
-        height: 120px;
-      }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -79,71 +67,78 @@
   <div id="tsparticles"></div>
 
   <header>
-    <nav class="max-w-6xl mx-auto flex justify-between items-center flex-wrap">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center">
       <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
-      <div class="space-x-3 sm:space-x-6 flex flex-wrap mt-2 sm:mt-0">
-        <a href="index.html">Início</a>
-        <a href="sobre.html" class="active">Sobre</a>
-        <a href="habilidades.html">Habilidades</a>
-        <a href="projetos.html">Projetos</a>
-        <a href="contato.html">Contato</a>
+      <div class="space-x-3 sm:space-x-6">
+        <a href="index.html" class="text-sm sm:text-base">Início</a>
+        <a href="sobre.html" class="text-sm sm:text-base font-bold text-blue-400">Sobre</a>
+        <a href="habilidades.html" class="text-sm sm:text-base">Habilidades</a>
+        <a href="projetos.html" class="text-sm sm:text-base">Projetos</a>
+        <a href="contato.html" class="text-sm sm:text-base">Contato</a>
       </div>
     </nav>
   </header>
 
-  <main class="relative z-10 max-w-4xl mx-auto px-4 py-24 sm:py-32 flex flex-col items-center text-center">
-    <h1 class="text-4xl sm:text-5xl font-bold text-blue-400 mb-8 animate-[neonFade_3s_ease-in-out_infinite_alternate]" id="titulo">
+  <main class="relative z-0 pt-36 pb-16 px-4 max-w-4xl mx-auto flex flex-col items-center text-center">
+    <h1 class="text-4xl sm:text-5xl font-bold text-blue-400 mb-8 animate-[neonFade_3s_ease-in-out_infinite_alternate]">
       Sobre Mim
     </h1>
 
     <img
       src="https://i.pravatar.cc/160"
       alt="Foto de Vinicius Santos"
-      class="w-32 sm:w-40 h-32 sm:h-40 rounded-full border-4 border-blue-400 shadow-blue-400 mb-8 object-cover"
-      id="foto"
+      class="w-40 h-40 sm:w-40 sm:h-40 rounded-full border-4 border-blue-400 shadow-blue-400 mb-8 object-cover"
+      style="animation: fadeInUp 0.8s ease forwards;"
     />
 
-    <p class="text-base sm:text-lg leading-relaxed text-blue-200 max-w-3xl mb-6" id="texto1">
+    <p class="text-base sm:text-lg leading-relaxed text-blue-200 max-w-3xl mb-6" style="animation: fadeInUp 0.8s ease forwards;">
       Sou Vinicius Santos, profissional de Tecnologia da Informação com mais de 11 anos de experiência em diversas áreas da TI. Atuei como analista de suporte, desenvolvedor e atualmente sou DBA, com foco em administração de bancos de dados SQL Server e otimização de consultas.
     </p>
-    <p class="text-base sm:text-lg leading-relaxed text-blue-200 max-w-3xl mb-10" id="texto2">
+    <p class="text-base sm:text-lg leading-relaxed text-blue-200 max-w-3xl mb-8" style="animation: fadeInUp 0.8s ease forwards;">
       Sou formado em Análise e Desenvolvimento de Sistemas e atualmente curso uma pós-graduação em Engenharia de Software. Tenho paixão por resolver problemas complexos, garantir a estabilidade e performance dos sistemas e contribuir para o crescimento técnico dos projetos onde atuo.
     </p>
 
-    <section class="timeline max-w-3xl w-full px-4 sm:px-6 border-l-4 border-blue-400" id="timeline">
-      <div class="timeline-item relative mb-8 pl-6">
+    <section class="timeline max-w-3xl w-full px-2 sm:px-6 border-l-4 border-blue-400">
+      <div class="timeline-item relative mb-8 pl-8">
         <div class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"></div>
         <h3 class="text-blue-400 text-xl mb-1">Formação em Análise e Desenvolvimento de Sistemas</h3>
         <span class="text-blue-200 italic text-sm mb-2 block">2024</span>
-        <p class="text-blue-200 text-base">Conclusão da graduação que proporcionou a base técnica para minha carreira em TI.</p>
+        <p class="text-blue-200 text-base m-0">
+          Conclusão da graduação que proporcionou a base técnica para minha carreira em TI.
+        </p>
       </div>
-      <div class="timeline-item relative mb-8 pl-6">
+
+      <div class="timeline-item relative mb-8 pl-8">
         <div class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"></div>
         <h3 class="text-blue-400 text-xl mb-1">Início da Pós-graduação em Engenharia de Software</h3>
         <span class="text-blue-200 italic text-sm mb-2 block">2025 (em andamento)</span>
-        <p class="text-blue-200 text-base">Buscando aprofundar conhecimentos em arquitetura, qualidade e gestão de software.</p>
+        <p class="text-blue-200 text-base m-0">
+          Buscando aprofundar conhecimentos em arquitetura, qualidade e gestão de software.
+        </p>
       </div>
-      <div class="timeline-item relative mb-8 pl-6">
+
+      <div class="timeline-item relative mb-8 pl-8">
         <div class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"></div>
         <h3 class="text-blue-400 text-xl mb-1">Transição para DBA</h3>
         <span class="text-blue-200 italic text-sm mb-2 block">2025</span>
-        <p class="text-blue-200 text-base">Foquei na administração e otimização de bancos de dados SQL Server, buscando excelência em performance.</p>
+        <p class="text-blue-200 text-base m-0">
+          Foquei na administração e otimização de bancos de dados SQL Server, buscando excelência em performance.
+        </p>
       </div>
-      <div class="timeline-item relative mb-8 pl-6">
+
+      <div class="timeline-item relative mb-8 pl-8">
         <div class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"></div>
         <h3 class="text-blue-400 text-xl mb-1">Mais de 11 anos de experiência em TI</h3>
         <span class="text-blue-200 italic text-sm mb-2 block">2013 - presente</span>
-        <p class="text-blue-200 text-base">Experiência sólida em desenvolvimento backend, infraestrutura, monitoramento e suporte técnico.</p>
+        <p class="text-blue-200 text-base m-0">
+          Experiência sólida em desenvolvimento backend, infraestrutura, monitoramento e suporte técnico.
+        </p>
       </div>
     </section>
   </main>
 
-  <footer class="text-center py-6 text-sm text-blue-200 border-t border-blue-900">
-    © 2025 Vinicius Santos. Todos os direitos reservados.
-  </footer>
-
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script>
-    // Partículas
     tsParticles.load("tsparticles", {
       fpsLimit: 60,
       background: { color: "#0f172a" },
@@ -153,8 +148,21 @@
         shape: { type: "circle" },
         opacity: { value: 0.25, random: true },
         size: { value: 3, random: { enable: true, minimumValue: 1 } },
-        move: { enable: true, speed: 1.3, random: true, outModes: { default: "out" } },
-        links: { enable: true, distance: 140, color: "#3b82f6", opacity: 0.25, width: 1 }
+        move: {
+          enable: true,
+          speed: 1.3,
+          direction: "none",
+          random: true,
+          straight: false,
+          outModes: { default: "out" }
+        },
+        links: {
+          enable: true,
+          distance: 140,
+          color: "#3b82f6",
+          opacity: 0.25,
+          width: 1
+        }
       },
       interactivity: {
         events: {
@@ -168,13 +176,6 @@
       },
       detectRetina: true
     });
-
-    // ScrollReveal animações
-    ScrollReveal().reveal('#titulo', { delay: 200, origin: 'top', distance: '40px' });
-    ScrollReveal().reveal('#foto', { delay: 400, origin: 'bottom', distance: '30px' });
-    ScrollReveal().reveal('#texto1', { delay: 500, origin: 'left', distance: '40px' });
-    ScrollReveal().reveal('#texto2', { delay: 600, origin: 'right', distance: '40px' });
-    ScrollReveal().reveal('#timeline .timeline-item', { interval: 200, origin: 'bottom', distance: '20px' });
   </script>
 </body>
 </html>
