@@ -6,11 +6,12 @@
   <title>Habilidades | Vinicius Santos</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <style>
     html, body {
       height: auto;
       margin: 0;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #a5b4fc;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       position: relative;
@@ -23,6 +24,8 @@
       z-index: 0;
       top: 0;
       left: 0;
+      pointer-events: none;
+      background: transparent;
     }
     header {
       position: fixed;
@@ -61,11 +64,15 @@
       color: #60a5fa;
       text-shadow: 0 0 8px #60a5fa;
     }
+    nav div a.active {
+      color: #60a5fa;
+      font-weight: 700;
+    }
     main {
       position: relative;
       z-index: 1;
       max-width: 900px;
-      margin: 100px auto 3rem; /* espaço do header fixo */
+      margin: 100px auto 3rem;
       padding: 0 2rem 3rem;
       display: flex;
       flex-direction: column;
@@ -123,27 +130,6 @@
       text-shadow: 0 0 4px #60a5fa;
       user-select: none;
     }
-    #btn-top {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      background: #2563eb;
-      border: none;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 0 10px #3b82f6;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease;
-      z-index: 100;
-    }
-    #btn-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
     @keyframes neonFade {
       0%, 100% {
         text-shadow:
@@ -170,6 +156,13 @@
         margin: 110px 1rem 2rem 1rem;
       }
     }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: #93c5fd;
+      border-top: 1px solid #374151;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -182,7 +175,7 @@
       <div>
         <a href="index.html">Início</a>
         <a href="sobre.html">Sobre</a>
-        <a href="habilidades.html" class="text-blue-400 font-semibold">Habilidades</a>
+        <a href="habilidades.html" class="active">Habilidades</a>
         <a href="projetos.html">Projetos</a>
         <a href="contato.html">Contato</a>
       </div>
@@ -243,21 +236,22 @@
     </div>
   </main>
 
-  <button id="btn-top" aria-label="Voltar ao topo">Topo ↑</button>
+  <footer>
+    © 2025 Vinicius Santos. Todos os direitos reservados.
+  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script>
     tsParticles.load("tsparticles", {
       fpsLimit: 60,
-      background: { color: "#0f172a" },
+      background: { color: "transparent" },
       particles: {
         number: { value: 50, density: { enable: true, area: 800 } },
         color: { value: "#60a5fa" },
         shape: { type: "circle" },
-        opacity: { value: 0.25, random: true },
+        opacity: { value: 0.4, random: true },
         size: { value: 3, random: { enable: true, minimumValue: 1 } },
         move: { enable: true, speed: 1.3, direction: "none", random: true, straight: false, outModes: { default: "out" } },
-        links: { enable: true, distance: 140, color: "#3b82f6", opacity: 0.25, width: 1 }
+        links: { enable: true, distance: 140, color: "#3b82f6", opacity: 0.4, width: 1 }
       },
       interactivity: {
         events: {
@@ -265,26 +259,13 @@
           onClick: { enable: true, mode: "push" }
         },
         modes: {
-          grab: { distance: 180, links: { opacity: 0.5 } },
+          grab: { distance: 180, links: { opacity: 0.6 } },
           push: { quantity: 4 }
         }
       },
       detectRetina: true
     });
 
-    const btnTop = document.getElementById('btn-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        btnTop.classList.add('show');
-      } else {
-        btnTop.classList.remove('show');
-      }
-    });
-    btnTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // ScrollReveal para animação suave
     ScrollReveal().reveal('#title', { delay: 200, origin: 'left', distance: '50px' });
     ScrollReveal().reveal('.skill-card', { delay: 400, origin: 'bottom', distance: '20px', interval: 100 });
   </script>

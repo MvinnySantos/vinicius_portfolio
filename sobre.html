@@ -6,12 +6,14 @@
   <title>Sobre | Vinicius Santos</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    body, html {
-      height: 100%;
+    html, body {
+      height: auto;
       margin: 0;
       background: #0f172a;
       color: #a5b4fc;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+      overflow-y: auto;
       overflow-x: hidden;
     }
     #tsparticles {
@@ -25,21 +27,133 @@
     header {
       position: fixed;
       width: 100%;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.9);
       z-index: 10;
       padding: 1rem 2rem;
       box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
     }
-    nav a {
+    nav {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a.logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #60a5fa;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    nav a.logo:hover, nav a.logo:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
+    nav div a {
       color: #a5b4fc;
       font-weight: 600;
       margin-left: 1rem;
-      transition: color 0.3s ease;
       text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      outline-offset: 3px;
     }
-    nav a:hover {
+    nav div a:hover, nav div a:focus {
       color: #60a5fa;
       text-shadow: 0 0 8px #60a5fa;
+      outline: 2px solid #60a5fa;
+      outline-offset: 2px;
+    }
+    nav div a.active {
+      color: #60a5fa;
+      font-weight: 700;
+      text-shadow: 0 0 10px #60a5fa;
+    }
+    main {
+      max-width: 900px;
+      margin: 110px auto 40px auto; /* afastar do header fixo */
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      color: #60a5fa;
+      margin-bottom: 2rem;
+      animation: neonFade 3s ease-in-out infinite alternate;
+      text-shadow:
+        0 0 5px #60a5fa,
+        0 0 10px #3b82f6,
+        0 0 20px #2563eb,
+        0 0 40px #1e40af;
+    }
+    img.profile-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 9999px;
+      border: 4px solid #60a5fa;
+      box-shadow: 0 0 10px #60a5fa;
+      margin-bottom: 2rem;
+      object-fit: cover;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    p {
+      color: #a5b4fc;
+      max-width: 700px;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    section.timeline {
+      max-width: 700px;
+      width: 100%;
+      padding-left: 1rem;
+      border-left: 4px solid #60a5fa;
+      margin-top: 2rem;
+      text-align: left;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -14px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background-color: #60a5fa;
+      border-radius: 9999px;
+      box-shadow: 0 0 10px #60a5fa;
+    }
+    .timeline-item h3 {
+      color: #60a5fa;
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+      text-shadow: 0 0 6px #60a5fa;
+    }
+    .timeline-item span {
+      display: block;
+      font-style: italic;
+      font-size: 0.875rem;
+      color: #a5b4fc;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-item p {
+      margin: 0;
+      color: #a5b4fc;
+      font-size: 1rem;
+      line-height: 1.4;
     }
     @keyframes neonFade {
       0%, 100% {
@@ -61,81 +175,104 @@
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+    /* Responsividade */
+    @media (max-width: 640px) {
+      main {
+        margin: 120px 1rem 40px 1rem;
+      }
+      nav div a {
+        margin-left: 0.75rem;
+        font-size: 0.9rem;
+      }
+      h1 {
+        font-size: 2.25rem;
+      }
+      img.profile-photo {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.5rem;
+      }
+      section.timeline {
+        max-width: 100%;
+        padding-left: 0.75rem;
+      }
+      .timeline-item::before {
+        left: -10px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: #93c5fd;
+      border-top: 1px solid #374151;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <div id="tsparticles"></div>
 
   <header>
-    <nav class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
-      <div class="space-x-3 sm:space-x-6">
-        <a href="index.html" class="text-sm sm:text-base">Início</a>
-        <a href="sobre.html" class="text-sm sm:text-base font-bold text-blue-400">Sobre</a>
-        <a href="habilidades.html" class="text-sm sm:text-base">Habilidades</a>
-        <a href="projetos.html" class="text-sm sm:text-base">Projetos</a>
-        <a href="contato.html" class="text-sm sm:text-base">Contato</a>
+    <nav>
+      <a href="index.html" class="logo">Vinicius Santos</a>
+      <div>
+        <a href="index.html">Início</a>
+        <a href="sobre.html" class="active">Sobre</a>
+        <a href="habilidades.html">Habilidades</a>
+        <a href="projetos.html">Projetos</a>
+        <a href="contato.html">Contato</a>
       </div>
     </nav>
   </header>
 
-  <main class="relative z-0 pt-36 pb-16 px-4 max-w-4xl mx-auto flex flex-col items-center text-center">
-    <h1 class="text-4xl sm:text-5xl font-bold text-blue-400 mb-8 animate-[neonFade_3s_ease-in-out_infinite_alternate]">
-      Sobre Mim
-    </h1>
+  <main>
+    <h1>Sobre Mim</h1>
 
     <img
       src="https://i.pravatar.cc/160"
       alt="Foto de Vinicius Santos"
-      class="w-40 h-40 sm:w-40 sm:h-40 rounded-full border-4 border-blue-400 shadow-blue-400 mb-8 object-cover"
-      style="animation: fadeInUp 0.8s ease forwards;"
+      class="profile-photo"
     />
 
-    <p class="text-base sm:text-lg leading-relaxed text-blue-200 max-w-3xl mb-6" style="animation: fadeInUp 0.8s ease forwards;">
+    <p>
       Sou Vinicius Santos, profissional de Tecnologia da Informação com mais de 11 anos de experiência em diversas áreas da TI. Atuei como analista de suporte, desenvolvedor e atualmente sou DBA, com foco em administração de bancos de dados SQL Server e otimização de consultas.
     </p>
-    <p class="text-base sm:text-lg leading-relaxed text-blue-200 max-w-3xl mb-8" style="animation: fadeInUp 0.8s ease forwards;">
+    <p>
       Sou formado em Análise e Desenvolvimento de Sistemas e atualmente curso uma pós-graduação em Engenharia de Software. Tenho paixão por resolver problemas complexos, garantir a estabilidade e performance dos sistemas e contribuir para o crescimento técnico dos projetos onde atuo.
     </p>
 
-    <section class="timeline max-w-3xl w-full px-2 sm:px-6 border-l-4 border-blue-400">
-      <div class="timeline-item relative mb-8 pl-8">
-        <div class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"></div>
-        <h3 class="text-blue-400 text-xl mb-1">Formação em Análise e Desenvolvimento de Sistemas</h3>
-        <span class="text-blue-200 italic text-sm mb-2 block">2024</span>
-        <p class="text-blue-200 text-base m-0">
-          Conclusão da graduação que proporcionou a base técnica para minha carreira em TI.
-        </p>
+    <section class="timeline" aria-label="Linha do tempo profissional">
+      <div class="timeline-item">
+        <h3>Formação em Análise e Desenvolvimento de Sistemas</h3>
+        <span>2024</span>
+        <p>Conclusão da graduação que proporcionou a base técnica para minha carreira em TI.</p>
       </div>
 
-      <div class="timeline-item relative mb-8 pl-8">
-        <div class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"></div>
-        <h3 class="text-blue-400 text-xl mb-1">Início da Pós-graduação em Engenharia de Software</h3>
-        <span class="text-blue-200 italic text-sm mb-2 block">2025 (em andamento)</span>
-        <p class="text-blue-200 text-base m-0">
-          Buscando aprofundar conhecimentos em arquitetura, qualidade e gestão de software.
-        </p>
+      <div class="timeline-item">
+        <h3>Início da Pós-graduação em Engenharia de Software</h3>
+        <span>2025 (em andamento)</span>
+        <p>Buscando aprofundar conhecimentos em arquitetura, qualidade e gestão de software.</p>
       </div>
 
-      <div class="timeline-item relative mb-8 pl-8">
-        <div class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"></div>
-        <h3 class="text-blue-400 text-xl mb-1">Transição para DBA</h3>
-        <span class="text-blue-200 italic text-sm mb-2 block">2025</span>
-        <p class="text-blue-200 text-base m-0">
-          Foquei na administração e otimização de bancos de dados SQL Server, buscando excelência em performance.
-        </p>
+      <div class="timeline-item">
+        <h3>Transição para DBA</h3>
+        <span>2025</span>
+        <p>Foquei na administração e otimização de bancos de dados SQL Server, buscando excelência em performance.</p>
       </div>
 
-      <div class="timeline-item relative mb-8 pl-8">
-        <div class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"></div>
-        <h3 class="text-blue-400 text-xl mb-1">Mais de 11 anos de experiência em TI</h3>
-        <span class="text-blue-200 italic text-sm mb-2 block">2013 - presente</span>
-        <p class="text-blue-200 text-base m-0">
-          Experiência sólida em desenvolvimento backend, infraestrutura, monitoramento e suporte técnico.
-        </p>
+      <div class="timeline-item">
+        <h3>Mais de 11 anos de experiência em TI</h3>
+        <span>2013 - presente</span>
+        <p>Experiência sólida em desenvolvimento backend, infraestrutura, monitoramento e suporte técnico.</p>
       </div>
     </section>
   </main>
+
+  <footer>
+    © 2025 Vinicius Santos. Todos os direitos reservados.
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script>
