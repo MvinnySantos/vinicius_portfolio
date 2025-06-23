@@ -13,7 +13,6 @@
       color: #a5b4fc;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
-      overflow-y: auto; /* Barra de rolagem vertical adicionada */
       position: relative;
     }
     #tsparticles {
@@ -35,7 +34,7 @@
     nav a {
       color: #a5b4fc;
       font-weight: 600;
-      margin-left: 2rem;
+      margin-left: 1rem;
       transition: color 0.3s ease;
       text-decoration: none;
     }
@@ -44,99 +43,7 @@
       text-shadow: 0 0 8px #60a5fa;
     }
 
-    main {
-      position: relative;
-      z-index: 1;
-      min-height: 100vh;
-      max-width: 900px;
-      margin: auto;
-      padding: 5rem 2rem 3rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: #60a5fa;
-      text-shadow:
-        0 0 5px #60a5fa,
-        0 0 10px #3b82f6,
-        0 0 20px #2563eb,
-        0 0 40px #1e40af;
-      animation: neonFade 3s ease-in-out infinite alternate;
-      margin-bottom: 2rem;
-    }
-
-    .profile-pic {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 4px solid #60a5fa;
-      box-shadow:
-        0 0 10px #60a5fa,
-        0 0 20px #3b82f6;
-      margin-bottom: 2rem;
-      object-fit: cover;
-      animation: fadeInUp 1.5s ease forwards;
-      opacity: 0;
-    }
-
-    p.description {
-      font-size: 1.125rem;
-      line-height: 1.7;
-      color: #c7d2fe;
-      max-width: 700px;
-      margin-bottom: 2rem;
-      animation: fadeInUp 2s ease forwards;
-      opacity: 0;
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 700px;
-      width: 100%;
-      margin-top: 3rem;
-      padding-left: 2rem;
-      border-left: 3px solid #60a5fa;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2.5rem;
-      padding-left: 2rem;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -10px;
-      top: 0;
-      width: 18px;
-      height: 18px;
-      background: #60a5fa;
-      border-radius: 50%;
-      box-shadow:
-        0 0 10px #60a5fa,
-        0 0 15px #3b82f6;
-    }
-    .timeline-item h3 {
-      color: #60a5fa;
-      margin-bottom: 0.25rem;
-      font-size: 1.25rem;
-    }
-    .timeline-item span {
-      font-size: 0.9rem;
-      color: #a5b4fc;
-      font-style: italic;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .timeline-item p {
-      font-size: 1rem;
-      color: #c7d2fe;
-      margin: 0;
-    }
-
+    /* animações e neon ficam iguais */
     @keyframes neonFade {
       0%, 100% {
         text-shadow:
@@ -171,46 +78,85 @@
   <header>
     <nav class="max-w-6xl mx-auto flex justify-between items-center">
       <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
-      <div>
-        <a href="index.html">Início</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="habilidades.html">Habilidades</a>
-        <a href="projetos.html">Projetos</a>
-        <a href="contato.html">Contato</a>
+      <div class="space-x-3 sm:space-x-6">
+        <a href="index.html" class="text-sm sm:text-base">Início</a>
+        <a href="sobre.html" class="text-sm sm:text-base">Sobre</a>
+        <a href="habilidades.html" class="text-sm sm:text-base">Habilidades</a>
+        <a href="projetos.html" class="text-sm sm:text-base">Projetos</a>
+        <a href="contato.html" class="text-sm sm:text-base">Contato</a>
       </div>
     </nav>
   </header>
 
-  <main>
-    <h1>Sobre Mim</h1>
-    <img src="https://i.pravatar.cc/160" alt="Foto de Vinicius Santos" class="profile-pic" />
-    <p class="description">
+  <main class="relative z-10 min-h-screen max-w-4xl mx-auto px-4 py-20 flex flex-col items-center text-center">
+    <h1 class="text-4xl sm:text-5xl font-bold text-blue-400 mb-8 animate-[neonFade_3s_ease-in-out_infinite_alternate]">
+      Sobre Mim
+    </h1>
+
+    <img
+      src="https://i.pravatar.cc/160"
+      alt="Foto de Vinicius Santos"
+      class="w-40 h-40 sm:w-40 sm:h-40 rounded-full border-4 border-blue-400 shadow-blue-400 mb-8 object-cover animate-fadeInUp"
+      style="animation-fill-mode: forwards;"
+    />
+
+    <p class="text-base sm:text-lg leading-relaxed text-blue-200 max-w-3xl mb-6 animate-fadeInUp" style="animation-fill-mode: forwards;">
       Sou Vinicius Santos, profissional de Tecnologia da Informação com mais de 11 anos de experiência em diversas áreas da TI. Atuei como analista de suporte, desenvolvedor e atualmente sou DBA, com foco em administração de bancos de dados SQL Server e otimização de consultas.
     </p>
-    <p class="description">
+    <p class="text-base sm:text-lg leading-relaxed text-blue-200 max-w-3xl mb-8 animate-fadeInUp" style="animation-fill-mode: forwards;">
       Sou formado em Análise e Desenvolvimento de Sistemas e atualmente curso uma pós-graduação em Engenharia de Software. Tenho paixão por resolver problemas complexos, garantir a estabilidade e performance dos sistemas e contribuir para o crescimento técnico dos projetos onde atuo.
     </p>
 
-    <section class="timeline" aria-label="Linha do tempo profissional e acadêmica">
-      <div class="timeline-item">
-        <h3>Formação em Análise e Desenvolvimento de Sistemas</h3>
-        <span>2024</span>
-        <p>Conclusão da graduação que proporcionou a base técnica para minha carreira em TI.</p>
+    <section
+      class="timeline max-w-3xl w-full px-2 sm:px-6 border-l-4 border-blue-400"
+      aria-label="Linha do tempo profissional e acadêmica"
+    >
+      <div class="timeline-item relative mb-8 pl-8">
+        <div
+          class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"
+          style="box-shadow: 0 0 10px #60a5fa, 0 0 15px #3b82f6"
+        ></div>
+        <h3 class="text-blue-400 text-xl mb-1">Formação em Análise e Desenvolvimento de Sistemas</h3>
+        <span class="text-blue-200 italic text-sm mb-2 block">2024</span>
+        <p class="text-blue-200 text-base m-0">
+          Conclusão da graduação que proporcionou a base técnica para minha carreira em TI.
+        </p>
       </div>
-      <div class="timeline-item">
-        <h3>Início da Pós-graduação em Engenharia de Software</h3>
-        <span>2025 (em andamento)</span>
-        <p>Buscando aprofundar conhecimentos em arquitetura, qualidade e gestão de software.</p>
+
+      <div class="timeline-item relative mb-8 pl-8">
+        <div
+          class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"
+          style="box-shadow: 0 0 10px #60a5fa, 0 0 15px #3b82f6"
+        ></div>
+        <h3 class="text-blue-400 text-xl mb-1">Início da Pós-graduação em Engenharia de Software</h3>
+        <span class="text-blue-200 italic text-sm mb-2 block">2025 (em andamento)</span>
+        <p class="text-blue-200 text-base m-0">
+          Buscando aprofundar conhecimentos em arquitetura, qualidade e gestão de software.
+        </p>
       </div>
-      <div class="timeline-item">
-        <h3>Transição para DBA</h3>
-        <span>2025</span>
-        <p>Foquei na administração e otimização de bancos de dados SQL Server, buscando excelência em performance.</p>
+
+      <div class="timeline-item relative mb-8 pl-8">
+        <div
+          class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"
+          style="box-shadow: 0 0 10px #60a5fa, 0 0 15px #3b82f6"
+        ></div>
+        <h3 class="text-blue-400 text-xl mb-1">Transição para DBA</h3>
+        <span class="text-blue-200 italic text-sm mb-2 block">2025</span>
+        <p class="text-blue-200 text-base m-0">
+          Foquei na administração e otimização de bancos de dados SQL Server, buscando excelência em performance.
+        </p>
       </div>
-      <div class="timeline-item">
-        <h3>Mais de 11 anos de experiência em TI</h3>
-        <span>2013 - presente</span>
-        <p>Experiência sólida em desenvolvimento backend, infraestrutura, monitoramento e suporte técnico.</p>
+
+      <div class="timeline-item relative mb-8 pl-8">
+        <div
+          class="absolute left-[-14px] top-0 w-5 h-5 rounded-full bg-blue-400 shadow-lg"
+          style="box-shadow: 0 0 10px #60a5fa, 0 0 15px #3b82f6"
+        ></div>
+        <h3 class="text-blue-400 text-xl mb-1">Mais de 11 anos de experiência em TI</h3>
+        <span class="text-blue-200 italic text-sm mb-2 block">2013 - presente</span>
+        <p class="text-blue-200 text-base m-0">
+          Experiência sólida em desenvolvimento backend, infraestrutura, monitoramento e suporte técnico.
+        </p>
       </div>
     </section>
   </main>
@@ -290,5 +236,3 @@
   </script>
 </body>
 </html>
-
-

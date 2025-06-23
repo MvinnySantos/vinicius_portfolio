@@ -6,6 +6,7 @@
   <title>Projetos | Vinicius Santos</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
   <style>
     html, body {
       height: 100%;
@@ -14,6 +15,7 @@
       overflow-y: auto;
       background: #0f172a;
       color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     #tsparticles {
       position: fixed;
@@ -23,48 +25,146 @@
       top: 0;
       left: 0;
     }
-    main, header, footer {
-      position: relative;
-      z-index: 1;
+    header {
+      position: fixed;
+      width: 100%;
+      background-color: rgba(15, 23, 42, 0.9);
+      padding: 1rem 2rem;
+      box-shadow: 0 0 10px #2563eb;
+      z-index: 10;
+    }
+    nav {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a.logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #60a5fa;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+    nav a.logo:hover {
+      transform: scale(1.05);
+    }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li a {
+      color: #a5b4fc;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #60a5fa;
+      text-shadow: 0 0 6px #60a5fa;
+    }
+    main {
+      max-width: 900px;
+      margin: 110px auto 40px auto; /* afastar do header fixo */
+      padding: 0 1rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid #374151;
+      padding-bottom: 0.5rem;
+    }
+    .project-card {
+      background-color: #1e293b; /* cinza escuro */
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.7);
+    }
+    .project-title {
+      color: #60a5fa;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .project-description {
+      color: #c7d2fe;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Responsividade nav */
+    @media (max-width: 640px) {
+      nav ul {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      nav a.logo {
+        font-size: 1.25rem;
+      }
+      main {
+        margin: 120px 1rem 40px 1rem;
+      }
+    }
+    /* Grid responsivo */
+    @media (max-width: 768px) {
+      .grid-projects {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 </head>
-<body class="text-white">
+<body>
 
   <div id="tsparticles"></div>
 
-  <header class="bg-gray-800 p-4 shadow-lg">
-    <nav class="flex justify-between max-w-6xl mx-auto">
-      <a href="index.html" class="font-bold text-xl text-blue-400 hover:scale-105 transform transition">Vinicius Santos</a>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="hover:text-blue-400 transition">Início</a></li>
-        <li><a href="sobre.html" class="hover:text-blue-400 transition">Sobre</a></li>
-        <li><a href="habilidades.html" class="hover:text-blue-400 transition">Habilidades</a></li>
-        <li><a href="projetos.html" class="hover:text-blue-400 transition">Projetos</a></li>
-        <li><a href="contato.html" class="hover:text-blue-400 transition">Contato</a></li>
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Vinicius Santos</a>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="habilidades.html">Habilidades</a></li>
+        <li><a href="projetos.html" class="text-blue-400 font-bold">Projetos</a></li>
+        <li><a href="contato.html">Contato</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="max-w-5xl mx-auto py-16 px-4">
-    <h1 class="text-3xl font-bold text-center mb-8 border-b border-gray-700 pb-2">Meus Projetos</h1>
+  <main>
+    <h1 id="title">Meus Projetos</h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <h2 class="text-xl font-semibold text-blue-400 mb-2">Sistema de Gestão de Tarefas</h2>
-        <p class="text-gray-300">Aplicação web desenvolvida com PHP e MySQL para controle de tarefas, prazos e usuários. Foco em produtividade e colaboração.</p>
+    <div class="grid grid-cols-2 gap-6 grid-projects">
+      <div class="project-card">
+        <h2 class="project-title">Sistema de Gestão de Tarefas</h2>
+        <p class="project-description">Aplicação web desenvolvida com PHP e MySQL para controle de tarefas, prazos e usuários. Foco em produtividade e colaboração.</p>
       </div>
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <h2 class="text-xl font-semibold text-blue-400 mb-2">Painel de Monitoramento</h2>
-        <p class="text-gray-300">Dashboard interativo utilizando Grafana e Zabbix para visualizar métricas de performance de servidores e aplicações em tempo real.</p>
+      <div class="project-card">
+        <h2 class="project-title">Painel de Monitoramento</h2>
+        <p class="project-description">Dashboard interativo utilizando Grafana e Zabbix para visualizar métricas de performance de servidores e aplicações em tempo real.</p>
       </div>
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <h2 class="text-xl font-semibold text-blue-400 mb-2">API de Consulta de Dados</h2>
-        <p class="text-gray-300">API RESTful desenvolvida em Python para servir dados de sistemas legados de forma segura e escalável.</p>
+      <div class="project-card">
+        <h2 class="project-title">API de Consulta de Dados</h2>
+        <p class="project-description">API RESTful desenvolvida em Python para servir dados de sistemas legados de forma segura e escalável.</p>
       </div>
-      <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <h2 class="text-xl font-semibold text-blue-400 mb-2">Plataforma de Portfólio</h2>
-        <p class="text-gray-300">Site responsivo com HTML, TailwindCSS e JavaScript para apresentar meus projetos, experiências e contato profissional.</p>
+      <div class="project-card">
+        <h2 class="project-title">Plataforma de Portfólio</h2>
+        <p class="project-description">Site responsivo com HTML, TailwindCSS e JavaScript para apresentar meus projetos, experiências e contato profissional.</p>
       </div>
     </div>
   </main>
@@ -74,6 +174,9 @@
   </footer>
 
   <script>
+    ScrollReveal().reveal('#title', { delay: 200, origin: 'left', distance: '50px' });
+    ScrollReveal().reveal('.project-card', { delay: 400, origin: 'bottom', distance: '20px', interval: 150 });
+
     tsParticles.load("tsparticles", {
       fpsLimit: 60,
       background: { color: "#0f172a" },
@@ -106,6 +209,5 @@
       detectRetina: true
     });
   </script>
-
 </body>
 </html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Habilidades | Vinicius Santos</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/scrollreveal"></script>
   <style>
     html, body {
       height: auto;
@@ -26,35 +27,51 @@
     header {
       position: fixed;
       width: 100%;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.9);
       z-index: 10;
       padding: 1rem 2rem;
       box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
     }
-    nav a {
+    nav {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    nav a.logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #60a5fa;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    nav a.logo:hover {
+      transform: scale(1.05);
+    }
+    nav div a {
       color: #a5b4fc;
       font-weight: 600;
       margin-left: 2rem;
-      transition: color 0.3s ease;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
-    nav a:hover {
+    nav div a:hover {
       color: #60a5fa;
       text-shadow: 0 0 8px #60a5fa;
     }
-
     main {
       position: relative;
       z-index: 1;
       max-width: 900px;
-      margin: 6rem auto 3rem;
+      margin: 100px auto 3rem; /* espaço do header fixo */
       padding: 0 2rem 3rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
-
     h1 {
       font-size: 3rem;
       color: #60a5fa;
@@ -66,14 +83,12 @@
       animation: neonFade 3s ease-in-out infinite alternate;
       margin-bottom: 3rem;
     }
-
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 2.5rem;
       width: 100%;
     }
-
     .skill-card {
       background: rgba(36, 52, 71, 0.6);
       border-radius: 12px;
@@ -93,7 +108,6 @@
         0 0 50px #3b82f6;
       z-index: 2;
     }
-
     .skill-icon {
       width: 48px;
       height: 48px;
@@ -102,7 +116,6 @@
       transition: filter 0.3s ease;
       object-fit: contain;
     }
-
     .skill-name {
       font-size: 1.125rem;
       font-weight: 600;
@@ -110,7 +123,6 @@
       text-shadow: 0 0 4px #60a5fa;
       user-select: none;
     }
-
     #btn-top {
       position: fixed;
       bottom: 40px;
@@ -132,7 +144,6 @@
       opacity: 1;
       visibility: visible;
     }
-
     @keyframes neonFade {
       0%, 100% {
         text-shadow:
@@ -149,18 +160,29 @@
           0 0 60px #2563eb;
       }
     }
+    /* responsividade */
+    @media (max-width: 640px) {
+      nav div a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+      }
+      main {
+        margin: 110px 1rem 2rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
+
   <div id="tsparticles"></div>
 
   <header>
-    <nav class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold text-blue-400 hover:text-blue-500 transition">Vinicius Santos</a>
+    <nav>
+      <a href="index.html" class="logo">Vinicius Santos</a>
       <div>
         <a href="index.html">Início</a>
         <a href="sobre.html">Sobre</a>
-        <a href="habilidades.html">Habilidades</a>
+        <a href="habilidades.html" class="text-blue-400 font-semibold">Habilidades</a>
         <a href="projetos.html">Projetos</a>
         <a href="contato.html">Contato</a>
       </div>
@@ -168,7 +190,7 @@
   </header>
 
   <main>
-    <h1>Minhas Habilidades Técnicas</h1>
+    <h1 id="title">Minhas Habilidades Técnicas</h1>
     <div class="skills-grid">
       <div class="skill-card" title="SQL Server">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" class="skill-icon" />
@@ -225,7 +247,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script>
-    // Partículas no background
     tsParticles.load("tsparticles", {
       fpsLimit: 60,
       background: { color: "#0f172a" },
@@ -251,7 +272,6 @@
       detectRetina: true
     });
 
-    // Botão voltar ao topo
     const btnTop = document.getElementById('btn-top');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300) {
@@ -263,6 +283,11 @@
     btnTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // ScrollReveal para animação suave
+    ScrollReveal().reveal('#title', { delay: 200, origin: 'left', distance: '50px' });
+    ScrollReveal().reveal('.skill-card', { delay: 400, origin: 'bottom', distance: '20px', interval: 100 });
   </script>
 </body>
 </html>
+
